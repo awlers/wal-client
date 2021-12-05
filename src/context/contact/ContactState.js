@@ -1,6 +1,5 @@
 import React, {useReducer} from 'react';
 import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid';
 import ContactContext from './contactContext';
 import contactReducer from './contactReducer';
 import {
@@ -33,7 +32,7 @@ const getContacts  = async () => {
    
 
     try {
-        const res = await axios.get('/api/contacts');
+        const res = await axios.get('https://frozen-escarpment-63857.herokuapp.com/api/contacts');
         dispatch ({type: GET_CONTACTS, payload: res.data});
     } catch (err) {
         dispatch ({type: CONTACT_ERROR, payload: err.response.msg});
@@ -51,7 +50,7 @@ const addContact  = async contact => {
     }
 
     try {
-        const res = await axios.post('/api/contacts',contact,config);
+        const res = await axios.post('https://frozen-escarpment-63857.herokuapp.com/api/contacts',contact,config);
         dispatch ({type: ADD_CONTACT, payload: res.data});
     } catch (err) {
         dispatch ({type: CONTACT_ERROR, payload: err.response.msg});
@@ -63,7 +62,7 @@ const addContact  = async contact => {
 const deleteContact  = async id => {
 
     try {
-        await axios.delete(`/api/contacts/${id}`);
+        await axios.delete(`https://frozen-escarpment-63857.herokuapp.com/api/contacts/${id}`);
         dispatch ({type: DELETE_CONTACT, payload: id})
     } catch (err) {
         dispatch ({type: CONTACT_ERROR, payload: err.response.msg});
@@ -82,7 +81,7 @@ const updateContact  = async contact => {
     }
 
     try {
-        const res = await axios.put(`/api/contacts/${contact._id}`,contact,config);
+        const res = await axios.put(`https://frozen-escarpment-63857.herokuapp.com/api/contacts/${contact._id}`,contact,config);
         dispatch ({type: UPDATE_CONTACT, payload: res.data})
     } catch (err) {
         dispatch ({type: CONTACT_ERROR, payload: err.response.msg});
