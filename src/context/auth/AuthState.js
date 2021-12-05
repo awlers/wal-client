@@ -53,7 +53,7 @@ const register  = async formData => {
 
     const config = {
         headers: {
-            'Contente-Type': 'application/json'
+            'Content-Type': 'application/json'
         }
     }
     try {
@@ -78,7 +78,7 @@ const login  = async formData => {
 
     const config = {
         headers: {
-            'Contente-Type': 'application/json'
+            'Content-Type': 'application/json'
         }
     }
     try {
